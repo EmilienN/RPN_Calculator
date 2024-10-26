@@ -27,3 +27,7 @@ htmlcov/
 # Fichiers temporaires
 *.tmp
 *.bak
+
+# Fichiers de gestion des attributs de Git
+.gitattributes
+
