@@ -44,17 +44,19 @@ def create_routes(api):
     logger.info("Routes RPN créées")
 
     @rpn.route('/op')
+    @rpn.param('operator', 'Opérateur à appliquer (+, -, *, /)')
     class OperandList(Resource):
         def get(self):
+            """Liste des opérateurs disponibles."""
             logger.info("Liste des opérateurs demandée")
             return {'operators': ['+', '-', '*', '/']}
 
     @rpn.route('/op/<string:operator>/stack/<string:stack_id>')
-    @rpn.param('operator', 'Opérateur à appliquer (+, -, *, /)')
     @rpn.param('stack_id', 'Identifiant de la pile')
     class OperandExecution(Resource):
         @rpn.marshal_with(models.calculator_response)
         def post(self, operator, stack_id):
+            """Exécute l'opérateur sur la pile spécifiée."""
             logger.info(f"Exécution de l'opérateur '{operator}' sur la pile {stack_id}")
             try:
                 calculator = controller.get_calculator(stack_id)

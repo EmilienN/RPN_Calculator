@@ -1,4 +1,4 @@
-"""Module principal pour l'application de calculatrice RPN."""
+"""Main module for the RPN calculator application."""
 
 import logging
 from flask import Flask, redirect
@@ -8,7 +8,7 @@ from api.routes import create_routes
 
 
 def configure_logging():
-    """Configure le logging pour l'application."""
+    """Configure logging for the application."""
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -24,28 +24,28 @@ def configure_logging():
 
 
 def create_app():
-    """Crée et configure l'application Flask."""
+    """Create and configure the Flask application."""
     configure_logging()
     app = Flask(__name__)
-    logging.info("Application Flask créée")
+    logging.info("Flask application created")
     
     api = Api(
         app,
         version='1.0',
         title='RPN Calculator API',
-        description='API pour calculatrice RPN',
+        description='API for RPN calculator',
         doc='/'
     )
-    logging.info("API Flask-RESTX configurée")
+    logging.info("Flask-RESTX API configured")
 
     rpn = create_routes(api)
     api.add_namespace(rpn, path='/rpn')
-    logging.info("Routes RPN ajoutées à l'API")
+    logging.info("RPN routes added to API")
 
     @app.route('/')
     def index():
-        """Route racine redirigeant vers Swagger UI."""
-        logging.info("Redirection vers Swagger UI")
+        """Root route redirecting to Swagger UI."""
+        logging.info("Redirecting to Swagger UI")
         return redirect('/swagger')
 
     return app
@@ -54,7 +54,7 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    logging.info("Démarrage de l'application")
+    logging.info("Starting the application")
     app.run(
         debug=True,
         host='127.0.0.1',
