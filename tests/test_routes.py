@@ -7,6 +7,7 @@ from core.calculator_operations import CalculatorWorkflow
 
 class TestRPNRoutes(TestCase):
     def create_app(self):
+        # Create and configure Flask app for testing
         app = Flask(__name__)
         api = Api(app)
         rpn = create_routes(api)
@@ -14,11 +15,13 @@ class TestRPNRoutes(TestCase):
         return app
 
     def test_list_operators(self):
+        # Test listing available operators
         response = self.client.get('/rpn/op')
         self.assert200(response)
         self.assertEqual(response.json, {'operators': ['+', '-', '*', '/']})
 
     def test_create_stack(self):
+        # Test creating a new stack
         response = self.client.post('/rpn/stack')
         self.assert200(response)
         self.assertIn('stack_id', response.json)

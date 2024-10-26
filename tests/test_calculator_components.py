@@ -76,7 +76,7 @@ class TestRPNCalculator:
         calculator.delete_last_value()
         assert calculator.get_stack() == [5.0]
 
-# Tests for CalculatorWorkflow class
+# CalculatorWorkflow tests
 class TestCalculatorWorkflow:
     @pytest.fixture
     def workflow(self):
