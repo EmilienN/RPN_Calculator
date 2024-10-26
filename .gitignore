@@ -1,0 +1,29 @@
+# Environnements virtuels
+venv_rnp_project/
+
+# Fichiers compilés Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers de couverture et de test
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Fichiers de l'IDE (si vous utilisez PyCharm ou VS Code)
+.idea/
+.vscode/
+
+
+# Fichiers de log
+*.log
+
+# Fichiers de configuration locaux
+*.cfg
+*.ini
+
+# Fichiers temporaires
+*.tmp
+*.bak
